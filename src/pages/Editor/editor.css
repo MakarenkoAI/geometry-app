@@ -1,0 +1,34 @@
+.app {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.toolbar {
+  display: flex;
+  padding: 10px;
+  background-color: #f0f0f0;
+}
+
+.tool, .shape-button {
+  margin: 5px;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  cursor: pointer;
+  background-color: #fff;
+}
+
+.tool.selected, .shape-button.selected {
+  background-color: #e0e0e0;
+}
+
+.canvas {
+  flex: 1;
+  border: 1px solid #ccc;
+}
+
+.flexbox-container {
+  display: 'flex';
+  flex-direction: row;
+}
