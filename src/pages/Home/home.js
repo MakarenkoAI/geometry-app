@@ -12,7 +12,10 @@ function Home() {
           <code>Geometry</code>
         </p>
         <Link to="/editor" className="Home-link">
-          Start here
+          Editor
+        </Link>
+        <Link to="/chat" className="Home-link">
+          Chat
         </Link>
       </header>
     </div>
