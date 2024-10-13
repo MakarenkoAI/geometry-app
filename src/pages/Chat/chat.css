@@ -3,28 +3,37 @@ body {
     margin-top: 20px;
 }
 
+.container
+{
+    height: 100%;
+    background-color: #ffffff;
+}
+
 .card {
-    background: #fff;
     transition: .5s;
     border: 0;
     margin-bottom: 30px;
     border-radius: .55rem;
     position: relative;
     width: 100%;
+    height: 100%;
     box-shadow: 0 1px 2px 0 rgb(0 0 0 / 10%);
 }
 
 .chat-app .people-list {
-    width: 260px;
+    float:left;
+    width: 20%;
+    height: 100%;
     position: absolute;
-    left: 0;
-    top: 0;
-    padding: 20px;
-    z-index: 7
+    padding: 20px 20px;
+    background: #ffffff;
 }
 
 .chat-app .chat {
-    margin-left: 280px;
+    background: #ffffff;
+    float:right;
+    width: 70%;
+    height: 100%;
     border-left: 1px solid #eaeaea
 }
 
@@ -38,7 +47,7 @@ body {
 .people-list .chat-list li {
     padding: 10px 15px;
     list-style: none;
-    border-radius: 3px
+    border-radius: 3px;
 }
 
 .people-list .chat-list li:hover {
@@ -55,7 +64,7 @@ body {
 }
 
 .people-list .chat-list img {
-    width: 45px;
+    width: 20%;
     border-radius: 50%
 }
 
@@ -82,22 +91,18 @@ body {
 .chat .chat-header img {
     float: left;
     border-radius: 40px;
-    width: 40px
+    width: 5%
 }
 
 .chat .chat-header .chat-about {
     float: left;
-    padding-left: 10px
-}
-
-.title {
-    color: #000000;
+    padding-left: 10px;
+    font-size: 25px;
+    color: #100;
     font-family: 'Rancho', cursive;
     font-style: normal;
-    position: relative;
-    top: 50%;
-    transform: translateY(-50%);
     text-align: center;
+    justify-content: center;
 }
 
 .chat .chat-history {
@@ -257,7 +262,7 @@ body {
     }
 
     .chat-app .chat-history {
-        height: 600px;
+        height: 100%;
         overflow-x: auto
     }
 }
@@ -276,7 +281,7 @@ body {
 
 input[type=text] {
     overflow-x: auto;
-    width: 75%;
+    width: 90%;
     appearance: none;
     border: none;
     outline: none;
