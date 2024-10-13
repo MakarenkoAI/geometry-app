@@ -4,7 +4,7 @@ import ShapeBar from './components/ShapeBar';
 import SheetBar from './components/SheetBar';
 import Canvas from './components/Canvas';
 import ShapeInfo from './components/ShapeInfo'; // Import ShapeInfo
-
+import Chat from "../Chat/chat"
 const Editor = () => {
     const [selectedTool, setSelectedTool] = useState(null);
     const [selectedShape, setSelectedShape] = useState(null);
@@ -20,10 +20,11 @@ const Editor = () => {
                     <SheetBar setSelectedSheet={setSelectedSheet} />
                 </div>
                 <div>
-                    <Canvas selectedTool={selectedTool} selectedShape={selectedShape} selectedSheet={selectedSheet} setSelectedFigure={setSelectedFigure}/>
+                    <Canvas selectedTool={selectedTool} selectedShape={selectedShape} selectedSheet={selectedSheet} setSelectedFigure={setSelectedFigure} />
                 </div>
             </div>
             <ShapeInfo shape={selectedFigure} /> {/* Display selected shape info */}
+            <Chat />
         </div>
     );
 };

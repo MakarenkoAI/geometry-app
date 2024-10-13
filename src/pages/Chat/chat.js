@@ -16,7 +16,7 @@ const Title = () => {
 const Search = () => {
     return (
         <div className="input-group">
-            <div className="input-group-prepend">
+            <div className="input-group-prepend inline">
                 <span className="input-group-text"><i className="fa fa-search"></i></span>
                 <input type="text" className="form-control" placeholder="Search..."
                     onKeyUp={(e) => {
@@ -45,8 +45,9 @@ const HistoryPart = ({ name, tag, active }) => {
 const PeopleList = () => {
     return (
         <div id="plist" className="people-list">
-            <Search />
-            <span className='chat-about'>History</span>
+            <div className='inline'><Search />
+                <span className='title'>History</span>
+            </div>
             <ul className="chat-list">
                 <HistoryPart name={"Math 1"} tag={"To study"} />
                 <HistoryPart name={"Math 2"} tag={"To study"} />
@@ -74,7 +75,7 @@ const UserInput = () => {
                                 alert(e.target.value);
                             }
                         }} />
-                    <img src={sendButtonImage} width="30" height="30" alt="avatar" onClick={handle} />
+                    <img src={sendButtonImage} width="6%" height="6%" alt="avatar" onClick={handle} />
                 </div>
             </div>
         </div>
@@ -121,7 +122,7 @@ const ChatWindow = () => {
 const Chat = () => {
     return (
         <div className="container" >
-            <div className="card chat-app">
+            <div display='inline-block'>
                 <PeopleList />
                 <ChatWindow />
             </div>
