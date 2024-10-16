@@ -33,17 +33,17 @@ const HistoryPart = ({ name, tag, active }) => {
 const SubjectList = () => {
     return (
         <div className="people-list row">
-            <div style={{width:"90%", height:"6%", paddingTop:"2%"}}>
+            <div style={{ width: "90%", height: "6%", paddingTop: "2%" }}>
                 <span className='title'>History</span>
             </div>
-            <div  style={{width:"90%", height:"70%"}}>
+            <div style={{ width: "90%", height: "70%" }}>
                 <ul className="chat-list">
                     <HistoryPart name={"Math 1"} tag={"To study"} />
                     <HistoryPart name={"Math 2"} tag={"To study"} />
                     <HistoryPart name={"Math 3"} tag={"To study"} />
                 </ul>
             </div>
-            <div  style={{width:"90%", height:"7%"}}>
+            <div style={{ width: "90%", height: "7%" }}>
                 <Search />
             </div>
         </div>
