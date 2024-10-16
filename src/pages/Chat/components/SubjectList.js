@@ -33,17 +33,20 @@ const HistoryPart = ({ name, tag, active }) => {
 const SubjectList = () => {
     return (
         <div className="people-list row">
-            <div style={{ width: "90%", height: "6%", paddingTop: "2%" }}>
+            <div style={{ width: "90%", height: "6%", paddingTop: "2%", paddingTop: "5%" }}>
                 <span className='title'>History</span>
             </div>
-            <div style={{ width: "90%", height: "70%" }}>
+            <div style={{ width: "80%", height: "70%", paddingBottom: "2%", paddingTop: "5%" }} className='hidden vertical-scroll'>
                 <ul className="chat-list">
+                    <HistoryPart name={"Math 1"} tag={"To study"} />
+                    <HistoryPart name={"Math 2"} tag={"To study"} />
+                    <HistoryPart name={"Math 3"} tag={"To study"} />
                     <HistoryPart name={"Math 1"} tag={"To study"} />
                     <HistoryPart name={"Math 2"} tag={"To study"} />
                     <HistoryPart name={"Math 3"} tag={"To study"} />
                 </ul>
             </div>
-            <div style={{ width: "90%", height: "7%" }}>
+            <div style={{ width: "90%", height: "7%", paddingTop: "5%" }}>
                 <Search />
             </div>
         </div>

@@ -272,3 +272,20 @@ input[type=text] {
     font-style: normal;
     font-size: 20px;
 }
+
+.vertical-scroll {
+    padding: 10px 5px 10px 20px;
+    margin: 0 auto;
+    overflow-y: scroll;
+
+}
+
+.hidden::-webkit-scrollbar {
+    display: none;
+    /* Hides the scrollbar */
+}
+
+.chat-history::-webkit-scrollbar {
+    display: none;
+    /* Hides the scrollbar */
+}

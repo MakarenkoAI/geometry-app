@@ -64,8 +64,12 @@ const ChatWindow = () => {
     return (
         <div className="chat row">
             <Title />
-            <div className="chat-history">
+            <div className="chat-history vertical-scroll">
                 <ul>
+                    <InputMessage messageText={"Hi, help me to find the square of triangle, please."} />
+                    <OutputMessage messageText={"Hello, can you tell more about the task?"} />
+                    <InputMessage messageText={"Hi, help me to find the square of triangle, please."} />
+                    <OutputMessage messageText={"Hello, can you tell more about the task?"} />
                     <InputMessage messageText={"Hi, help me to find the square of triangle, please."} />
                     <OutputMessage messageText={"Hello, can you tell more about the task?"} />
                 </ul>
