@@ -55,7 +55,7 @@
 }
 
 .people-list .chat-list li {
-    padding: 5%;
+    padding: 2%;
     list-style: none;
     border-radius: 3px;
 }
@@ -74,7 +74,7 @@
 }
 
 .people-list .chat-list img {
-    width: 20%;
+    width: 15%;
     border-radius: 30%
 }
 
@@ -85,7 +85,7 @@
 
 .people-list .about {
     float: left;
-    padding-left: 4%
+    padding-left: 2%
 }
 
 .people-list .status {
@@ -103,7 +103,7 @@
 
 .chat .chat-header img {
     float: left;
-    border-radius: 40px;
+    border-radius: 20px;
     width: 5%;
     padding-left: 1%;
     padding-top: 1%;
@@ -122,9 +122,9 @@
 }
 
 .chat .chat-history {
-    border-bottom: 1px inset rgb(67, 63, 63);
+    border-bottom: 1px inset rgb(208, 208, 208);
     background: #ffffff;
-    height: 75%;
+    height: 80%;
     width: 100%;
 }
 
@@ -159,6 +159,7 @@
 
 .chat .chat-history .message {
     color: #444;
+    /*text */
     padding: 2%;
     line-height: 26px;
     font-size: 16px;
@@ -184,7 +185,8 @@
 }
 
 .chat .chat-history .my-message {
-    background: #efefef
+    background: #d9fbff;
+    /*left message*/
 }
 
 .chat .chat-history .my-message:after {
@@ -196,23 +198,26 @@
     width: 0;
     position: absolute;
     pointer-events: none;
-    border-bottom-color: #efefef;
+    border-bottom-color: #d9fbff;
+    /*left message*/
     border-width: 10px;
     margin-left: -10px
 }
 
 .chat .chat-history .other-message {
-    background: #e8f1f3;
+    background: #9ce2f0;
+    /*right message*/
     text-align: right
 }
 
 .chat .chat-history .other-message:after {
-    border-bottom-color: #e8f1f3;
+    border-bottom-color: #9ce2f0;
+    /*right message*/
     left: 93%
 }
 
 .chat .chat-message {
-    height: 10%;
+    height: 8%;
     width: 100%;
     background: #ffffff;
 }
@@ -274,10 +279,8 @@ input[type=text] {
 }
 
 .vertical-scroll {
-    padding: 10px 5px 10px 20px;
     margin: 0 auto;
     overflow-y: scroll;
-
 }
 
 .hidden::-webkit-scrollbar {
@@ -288,4 +291,16 @@ input[type=text] {
 .chat-history::-webkit-scrollbar {
     display: none;
     /* Hides the scrollbar */
+}
+
+.subjecttext {
+    font-family: 'Rancho', cursive;
+    font-style: normal;
+    font-size: 14px;
+}
+
+#buttons {
+    color: #c9c9c9;
+    text-shadow: 1px 1px 1px #ffffff;
+    font-size: 1.5em;
 }

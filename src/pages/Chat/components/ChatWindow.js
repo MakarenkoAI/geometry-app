@@ -4,9 +4,10 @@ import '../chat.css';
 const Title = () => {
     return (
         <div className="chat-header">
-            <a href="http://localhost:3000/chat" data-toggle="modal" data-target="#view_info">
+            {/* <a href="http://localhost:3000/chat" data-toggle="modal" data-target="#view_info">
                 <img src="https://th.bing.com/th/id/OIP.A8lyNalw4uW0GtMhQB_9ZAHaHa?w=800&h=800&rs=1&pid=ImgDetMain" alt="avatar" />
-            </a>
+            </a> */}
+            <i id="buttons" class="fa fa-hashtag" aria-hidden="true" style={{ float: 'left', marginTop: '1%' }}></i>
             <span className='chat-about'>Chat</span>
         </div>
     );
@@ -30,7 +31,7 @@ const UserInput = () => {
                                 alert(e.target.value);
                             }
                         }} />
-                    <span className="input-group-text"><i class="fa fa-paper-plane-o fa-2x" onClick={handle}></i></span>
+                    <span className="input-group-text"><i id="buttons" class="fa fa-paper-plane-o fa-2x" onClick={handle}></i></span>
                 </div>
             </div>
         </div>
