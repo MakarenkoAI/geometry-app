@@ -12,7 +12,7 @@ const Editor = () => {
     const [selectedFigure, setSelectedFigure] = useState(null); // State for selected figure
 
     return (
-        <div style={{ display: 'flex', height: '100vh' }}>
+        <div style={{ display: 'flex', height: '100vh', position:'fixed' }}>
             <Toolbar setSelectedTool={setSelectedTool} />
             <div >
                 <div style={{ display: 'flex', height: '11vh' }}>

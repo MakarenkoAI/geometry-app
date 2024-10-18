@@ -9,7 +9,6 @@ const ChatComponent = () => {
             <SubjectList />
             <ChatWindow />
         </div>
-
     );
 };
 

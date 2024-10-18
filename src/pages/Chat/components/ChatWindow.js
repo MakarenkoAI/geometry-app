@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../chat.css';
 
 const Title = () => {
@@ -7,30 +7,38 @@ const Title = () => {
             {/* <a href="http://localhost:3000/chat" data-toggle="modal" data-target="#view_info">
                 <img src="https://th.bing.com/th/id/OIP.A8lyNalw4uW0GtMhQB_9ZAHaHa?w=800&h=800&rs=1&pid=ImgDetMain" alt="avatar" />
             </a> */}
-            <i id="buttons" class="fa fa-hashtag" aria-hidden="true" style={{ float: 'left', marginTop: '1%' }}></i>
-            <span className='chat-about'>Chat</span>
+            {/* <i id="buttons" class="fa fa-hashtag" aria-hidden="true" style={{ float: 'left', marginTop: '1%' }}></i> */}
+            <span className='chat-about'>Geometry Chat</span>
         </div>
     );
 }
 
-const UserInput = () => {
+//TODO
+const ProcessMessage = ({ message }) => {
+    //    There should be prossesing with nlp
+}
+
+const UserInput = ({ onButtonClick }) => {
     const [value, setValue] = useState("");
     function handle() {
-        alert(value);
         console.log(value);
+        onButtonClick(value);
+        setValue("");
     }
     return (
         <div className="chat-message">
             <div className="input-group mb-0">
                 <div className="input-group-prepend pad">
                     <input name="inputMessage" type="text" className="form-control" placeholder="Enter text here..."
-                        value={value} // ...force the input's value to match the state variable...
+                        value={value}
                         onChange={(e) => { setValue(e.target.value) }}
                         onKeyUp={(e) => {
                             if (e.key === 'Enter') {
-                                alert(e.target.value);
+                                onButtonClick(e.target.value);
+                                setValue("");
                             }
-                        }} />
+                        }}
+                        autoComplete="off" />
                     <span className="input-group-text"><i id="buttons" class="fa fa-paper-plane-o fa-2x" onClick={handle}></i></span>
                 </div>
             </div>
@@ -54,28 +62,53 @@ const InputMessage = ({ messageText }) => {
         <li className="clearfix">
             <div className="message-data float-right">
                 <span className="message-data-time">10:10 AM, Today</span>
-                <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="avatar/" />
+                {/* <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="avatar/" /> */}
             </div>
-            <div className="message other-message float-right">{messageText}</div>
+            <div className="message other-message float-right multiline">{messageText}</div>
         </li>
     );
 }
 
+const Message = ({ text, classMessage }) => {
+    if (classMessage == 'output') {
+        return (<OutputMessage messageText={text} />);
+    }
+    else {
+        return (
+            <InputMessage messageText={text} />
+        );
+    }
+}
+
+//TODO
+let messages = [
+// history of messages
+// should be stored with Cookies or smth like that
+]
+
 const ChatWindow = () => {
+    const [message, setMessage] = useState("");
+
+    const handleMessage = (msg) => {
+        setMessage(msg);
+        ProcessMessage(msg);
+        messages.push({ text: msg, class: 'input' });
+        messages.push({ text: "okay", class: 'output' });
+    };
+
     return (
         <div className="chat row">
             <Title />
             <div className="chat-history vertical-scroll">
                 <ul>
-                    <InputMessage messageText={"Hi, help me to find the square of triangle, please."} />
-                    <OutputMessage messageText={"Hello, can you tell more about the task?"} />
-                    <InputMessage messageText={"Hi, help me to find the square of triangle, please."} />
-                    <OutputMessage messageText={"Hello, can you tell more about the task?"} />
-                    <InputMessage messageText={"Hi, help me to find the square of triangle, please."} />
-                    <OutputMessage messageText={"Hello, can you tell more about the task?"} />
+                    {
+                        messages.map((msg, index) => {
+                            return <Message text={msg.text} classMessage={msg.class} />;
+                        })
+                    }
                 </ul>
             </div>
-            <UserInput />
+            <UserInput onButtonClick={handleMessage} />
         </div>
     );
 }

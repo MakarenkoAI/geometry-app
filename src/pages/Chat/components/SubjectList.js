@@ -11,7 +11,8 @@ const Search = () => {
                         if (e.key === 'Enter') {
                             alert(e.target.value);
                         }
-                    }} />
+                    }}
+                    autocomplete="off" />
             </div>
         </div>
     );
@@ -34,7 +35,7 @@ const HistoryPart = ({ name, tag, active }) => {
 const SubjectList = () => {
     return (
         <div className="people-list row">
-            <div style={{ width: "90%", height: "6%", paddingTop: "2%", paddingTop: "5%" }}>
+            <div style={{ width: "90%", height: "6%", paddingTop: "2%" }}>
                 <span className='title'>History</span>
             </div>
             <div style={{ width: "80%", height: "70%", paddingBottom: "2%", paddingTop: "5%" }} className='hidden vertical-scroll'>
