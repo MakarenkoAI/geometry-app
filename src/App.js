@@ -1,13 +1,15 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Home from './pages/Home/home';
-import Editor from './pages/Editor/editor'; 
+import Editor from './pages/Editor/editor';
+import Chat from './pages/Chat/chat';
 
-function App(){
+function App() {
   return (
     <Router>
       <Routes>
         <Route path="/" element={<Home />} />  {/* Главная страница */}
         <Route path="/editor" element={<Editor />} />  {/* Редактор */}
+        <Route path="/chat" element={<Chat />} />  {/* Чат */}
       </Routes>
     </Router>
   );
