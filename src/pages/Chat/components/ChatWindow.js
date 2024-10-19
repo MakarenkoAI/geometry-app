@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import '../chat.css';
 
 const Title = () => {
@@ -82,8 +82,8 @@ const Message = ({ text, classMessage }) => {
 
 //TODO
 let messages = [
-// history of messages
-// should be stored with Cookies or smth like that
+    // history of messages
+    // should be stored with Cookies or smth like that
 ]
 
 const ChatWindow = () => {

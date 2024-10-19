@@ -1,6 +1,6 @@
 #parent {
-    height: 100vh;
-    width: 35vw;
+    height: 83%;
+    width: 100%;
     background-color: rgb(240, 240, 240);
 }
 
@@ -120,7 +120,8 @@
     padding-top: 1%;
     font-size: 28px;
     color: rgb(102, 97, 97);
-    font-family: system-ui;;
+    font-family: system-ui;
+    ;
     font-style: normal;
     text-align: center;
     justify-content: center;

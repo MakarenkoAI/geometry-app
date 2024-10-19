@@ -1,20 +1,19 @@
 import React from 'react';
+import '../editor.css';
 
 const Toolbar = ({ setSelectedTool }) => {
     const tools = ['Select', 'Draw', 'Erase'];
-
     return (
-        <div style={{ width: '80px', borderRight: '1px solid black' }}>
-            <div style={{ height: '80px', borderBottom: '1px solid black' }}>
-            </div>
+        <div className='toolbar round-border'>
             <div>
                 {tools.map((tool, index) => (
-                    <button key={index} onClick={() => setSelectedTool(tool)}>
+                    <button className='toolButton round-border selectedBtn' role="button" key={index} onClick={() => setSelectedTool(tool)}>
                         {tool}
                     </button>
                 ))}
             </div>
         </div>
+
     );
 };
 

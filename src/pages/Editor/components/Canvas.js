@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
+import '../editor.css';
 
 const GRID_SIZE = 20;
 
@@ -240,8 +241,8 @@ const Canvas = ({ selectedTool, selectedShape, setSelectedFigure }) => {
         <canvas
             ref={canvasRef}
             width={800}
+            border={'none'}
             height={600}
-            style={{ border: '1px solid black' }}
             onMouseDown={handleMouseDown}
             onMouseMove={handleMouseMove}
             onMouseUp={handleMouseUp}
