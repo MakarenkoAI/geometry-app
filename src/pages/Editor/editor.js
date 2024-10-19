@@ -3,7 +3,9 @@ import Toolbar from './components/Toolbar';
 import ShapeBar from './components/ShapeBar';
 import SheetBar from './components/SheetBar';
 import Canvas from './components/Canvas';
-import ShapeInfo from './components/ShapeInfo'; // Import ShapeInfo
+import ShapeInfo from './components/ShapeInfo';
+import ChatComponent from "../Chat/components/ChatComponent";
+import './editor.css';
 
 const Editor = () => {
     const [selectedTool, setSelectedTool] = useState(null);
@@ -12,18 +14,25 @@ const Editor = () => {
     const [selectedFigure, setSelectedFigure] = useState(null); // State for selected figure
 
     return (
-        <div style={{ display: 'flex', height: '100vh' }}>
-            <Toolbar setSelectedTool={setSelectedTool} />
-            <div >
-                <div style={{ display: 'flex', height: '11vh' }}>
+        <div className='app'>
+            <div className='editor'>
+                <div className='upper-part inline-block'>
                     <ShapeBar setSelectedShape={setSelectedShape} />
                     <SheetBar setSelectedSheet={setSelectedSheet} />
                 </div>
-                <div>
-                    <Canvas selectedTool={selectedTool} selectedShape={selectedShape} selectedSheet={selectedSheet} setSelectedFigure={setSelectedFigure}/>
+                <div className='lower-part'>
+                    <Toolbar setSelectedTool={setSelectedTool} />
+                    <div className='canvasFrame round-border'>
+                        <Canvas selectedTool={selectedTool} selectedShape={selectedShape} selectedSheet={selectedSheet} setSelectedFigure={setSelectedFigure} />
+                    </div>
                 </div>
             </div>
-            <ShapeInfo shape={selectedFigure} /> {/* Display selected shape info */}
+            <div className='noteditor'>
+                <ShapeInfo shape={selectedFigure} />
+                <div id="parent">
+                    <ChatComponent />
+                </div>
+            </div>
         </div>
     );
 };
