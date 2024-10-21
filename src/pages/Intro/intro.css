@@ -1,0 +1,53 @@
+.intro-container {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .intro-title {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  .intro-info {
+    font-size: 16px;
+    margin-bottom: 20px;
+  }
+  
+  .intro-form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .intro-inputGroup {
+    margin-bottom: 15px;
+  }
+  
+  .intro-inputGroup label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  .intro-inputGroup input {
+    width: 100%;
+    padding: 2px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .intro-button {
+    padding: 10px 15px;
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    cursor: pointer;
+  }
