@@ -7,13 +7,13 @@ function Intro() {
   const [grade, setGrade] = useState('');
 
   return (
-    <div className="container">
-      <h1 className="title">Добро пожаловать в наше приложение!</h1>
-      <p className="info">
+    <div className="intro-container">
+      <h1 className="intro-title">Добро пожаловать в наше приложение!</h1>
+      <p className="intro-info">
         Это приложение поможет вам в учебе, предоставляя полезные материалы и инструменты для школьников.
       </p>
-      <form className="form">
-        <div className="inputGroup">
+      <form className="intro-form">
+        <div className="intro-inputGroup">
           <label htmlFor="name">Имя:</label>
           <input
             type="text"
@@ -23,7 +23,7 @@ function Intro() {
             required
           />
         </div>
-        <div className="inputGroup">
+        <div className="intro-inputGroup">
           <label htmlFor="grade">Класс:</label>
           <input
             type="text"
@@ -33,7 +33,7 @@ function Intro() {
             required
           />
         </div>
-        <Link to="/editor" className="button">
+        <Link to="/editor" className="intro-button">
           Начать
         </Link>
       </form>

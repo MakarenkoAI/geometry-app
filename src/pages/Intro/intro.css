@@ -1,4 +1,4 @@
-.container {
+.intro-container {
     max-width: 400px;
     margin: 0 auto;
     padding: 20px;
@@ -8,31 +8,31 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   }
   
-  .title {
+  .intro-title {
     font-size: 24px;
     margin-bottom: 10px;
   }
   
-  .info {
+  .intro-info {
     font-size: 16px;
     margin-bottom: 20px;
   }
   
-  .form {
+  .intro-form {
     display: flex;
     flex-direction: column;
   }
   
-  .inputGroup {
+  .intro-inputGroup {
     margin-bottom: 15px;
   }
   
-  .inputGroup label {
+  .intro-inputGroup label {
     display: block;
     margin-bottom: 5px;
   }
   
-  .inputGroup input {
+  .intro-inputGroup input {
     width: 100%;
     padding: 2px;
     box-sizing: border-box;
@@ -40,7 +40,7 @@
     border-radius: 4px;
   }
   
-  .button {
+  .intro-button {
     padding: 10px 15px;
     background-color: #007BFF;
     color: #fff;
