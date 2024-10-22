@@ -22,7 +22,30 @@ const Canvas = ({ selectedTool, selectedShape, setSelectedFigure }) => {
         Triangle: 'blue'
     };
 
+    const handleResize = () => {
+        const canvas = canvasRef.current;
+        const { clientWidth, clientHeight } = canvas.parentElement;
+
+        // Set the internal resolution of the canvas
+        canvas.width = clientWidth;
+        canvas.height = clientHeight;
+        redrawCanvas();
+    };
+
     useEffect(() => {
+        handleResize(); // Set initial size
+        window.addEventListener('resize', handleResize); // Update size on window resize
+
+        return () => {
+            window.removeEventListener('resize', handleResize); // Cleanup listener
+        };
+    }, [shapes, points, selectedShapePoints, hoveredShapePoints]);
+
+    useEffect(() => {
+        redrawCanvas();
+    }, [shapes, points, selectedShapePoints, hoveredShapePoints]); // Redraw shapes and points whenever they change
+
+    const redrawCanvas = () => {
         const canvas = canvasRef.current;
         const ctx = canvas.getContext('2d');
         ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -107,7 +130,7 @@ const Canvas = ({ selectedTool, selectedShape, setSelectedFigure }) => {
             ctx.fillStyle = 'black'; // Color for the points
             ctx.fill();
         });
-    }, [shapes, points, selectedShapePoints, hoveredShapePoints]); // Redraw shapes and points whenever they change
+    };
 
     useEffect(() => {
         // Clear points whenever the selected tool changes
@@ -240,9 +263,8 @@ const Canvas = ({ selectedTool, selectedShape, setSelectedFigure }) => {
     return (
         <canvas
             ref={canvasRef}
-            width={800}
             border={'none'}
-            height={600}
+            style={{ width: '100%', height: '100%' }}
             onMouseDown={handleMouseDown}
             onMouseMove={handleMouseMove}
             onMouseUp={handleMouseUp}
