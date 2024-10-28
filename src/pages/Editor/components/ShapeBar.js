@@ -12,7 +12,7 @@ const shapes = [
     },
     {
         Shape: 'Triangle',
-        img:'fa-sharp fa-regular fa-triangle',
+        img:'fa fa-sort-asc fa-4x',
         src: triangle,
     },
     {
