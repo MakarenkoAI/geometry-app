@@ -31,6 +31,18 @@
   background-color: #ffffff;
 }
 
+.instruments{
+  height: 90%;
+}
+
+.back{
+  height: 10%;
+}
+
+.cntr{
+  margin-left: 13%;
+}
+
 .canvasFrame {
   float: left;
   width: 85%;
@@ -83,6 +95,8 @@
   margin-left: 3%;
   margin-top: 2%;
   cursor: pointer;
+  color: #c9c9c9;
+  text-shadow: 1px 1px 1px #ffffff;
 }
 
 .shapebar {
@@ -108,19 +122,14 @@
 }
 
 .toolButton {
-  display: flex;
-  align-self: center;
   background-color: #fff;
-  background-image: none;
-  border: 2px thick #7f7f7f;
   width: 80%;
-  box-shadow: rgba(0, 0, 0, .2) 15px 28px 25px -18px;
-  color: #41403e;
+  border-color: #e0e0e0;
+  color: #787878;
   cursor: pointer;
   font-family: Neucha, sans-serif;
   font-size: 1rem;
   padding: .7rem;
-  touch-action: manipulation;
   margin-left: 8%;
   margin-top: 10%;
 }
@@ -137,18 +146,15 @@
 .sheetButton {
   align-self: center;
   background-color: #fff;
-  background-image: none;
-  border: 2px thick #7f7f7f;
   width: 20%;
-  box-shadow: rgba(0, 0, 0, .2) 15px 28px 25px -18px;
-  color: #41403e;
   cursor: pointer;
   font-family: Neucha, sans-serif;
   font-size: 1rem;
   padding: .7rem;
-  touch-action: manipulation;
   margin-left: 9%;
   margin-top: 3%;
+  border-color: #e0e0e0;
+  color: #787878;
 }
 
 table {
@@ -160,13 +166,19 @@ th {
   border: 1px solid #b2b2b2;
   background: rgb(255, 255, 255);
   text-align: center;
-  color: rgb(105, 105, 105);
-  vertical-align: middle;
   padding: 10px;
-}
-
-.numberstyle {
+  width:auto;
   font-family: 'Oxygen';
   font-style: normal;
-  font-weight: 400;
+  font-weight: 200;
+}
+
+.rotate{
+  margin-left: 10%;
+  transform: scale(-1, 1)
+}
+
+#fa-buttons {
+  color: #c9c9c9;
+  text-shadow: 1px 1px 1px #ffffff;
 }
