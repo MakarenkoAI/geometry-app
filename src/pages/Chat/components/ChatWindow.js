@@ -70,7 +70,7 @@ const InputMessage = ({ messageText }) => {
 }
 
 const Message = ({ text, classMessage }) => {
-    if (classMessage == 'output') {
+    if (classMessage === 'output') {
         return (<OutputMessage messageText={text} />);
     }
     else {
@@ -87,7 +87,7 @@ let messages = [
 ]
 
 const ChatWindow = () => {
-    const [message, setMessage] = useState("");
+    const [,setMessage] = useState("");
 
     const handleMessage = (msg) => {
         setMessage(msg);
