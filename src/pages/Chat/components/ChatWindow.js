@@ -1,13 +1,10 @@
 import React, { useState } from 'react';
+import { exampleAgent } from '../../../api/agents/exampleAgent';
 import '../chat.css';
 
 const Title = () => {
     return (
         <div className="chat-header">
-            {/* <a href="http://localhost:3000/chat" data-toggle="modal" data-target="#view_info">
-                <img src="https://th.bing.com/th/id/OIP.A8lyNalw4uW0GtMhQB_9ZAHaHa?w=800&h=800&rs=1&pid=ImgDetMain" alt="avatar" />
-            </a> */}
-            {/* <i id="buttons" class="fa fa-hashtag" aria-hidden="true" style={{ float: 'left', marginTop: '1%' }}></i> */}
             <span className='chat-about'>Geometry Chat</span>
         </div>
     );
@@ -39,7 +36,7 @@ const UserInput = ({ onButtonClick }) => {
                             }
                         }}
                         autoComplete="off" />
-                    <span className="input-group-text"><i id="buttons" class="fa fa-paper-plane-o fa-2x" onClick={handle}></i></span>
+                    <span className="input-group-text"><i id="buttons" className="fa fa-paper-plane-o fa-2x" onClick={handle}></i></span>
                 </div>
             </div>
         </div>
@@ -62,7 +59,6 @@ const InputMessage = ({ messageText }) => {
         <li className="clearfix">
             <div className="message-data float-right">
                 <span className="message-data-time">10:10 AM, Today</span>
-                {/* <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="avatar/" /> */}
             </div>
             <div className="message other-message float-right multiline">{messageText}</div>
         </li>
@@ -104,7 +100,8 @@ const ChatWindow = () => {
         messages.push({ text: data.response, class: 'output' });
         setMessage("");
     };
-
+    let ex = exampleAgent("name");
+    console.log(ex);
     return (
         <div className="chat row">
             <Title />
