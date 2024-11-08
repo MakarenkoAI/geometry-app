@@ -9,11 +9,13 @@ const baseKeynodes = [
     { id: rrelation, type: ScType.NodeConstRole },
 ];
 
-const findDialogNode = async (user: string) => {
+const findNode = async (user: string) => {
     const keynodes = await client.resolveKeynodes(baseKeynodes);
     return keynodes;
 };
 
-export const exampleAgent = async (name) => {
-    return await findDialogNode(name);
+export const exampleAgent = async () => {
+    const userNode = await client.getUser();
+    const user = client.getLinkContents([userNode]);
+    return user;
 };

@@ -101,7 +101,7 @@ const ChatWindow = () => {
         setMessage("");
     };
     let ex = exampleAgent("name");
-    console.log(ex);
+    console.log("answer", ex);
     return (
         <div className="chat row">
             <Title />
