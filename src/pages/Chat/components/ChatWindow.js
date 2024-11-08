@@ -70,7 +70,7 @@ const InputMessage = ({ messageText }) => {
 }
 
 const Message = ({ text, classMessage }) => {
-    if (classMessage == 'output') {
+    if (classMessage === 'output') {
         return (<OutputMessage messageText={text} />);
     }
     else {
@@ -87,13 +87,29 @@ let messages = [
 ]
 
 const ChatWindow = () => {
-    const [message, setMessage] = useState("");
+    const [, setMessage] = useState("");
 
-    const handleMessage = (msg) => {
+    const handleMessage = async (msg) => {
         setMessage(msg);
-        ProcessMessage(msg);
         messages.push({ text: msg, class: 'input' });
-        messages.push({ text: "okay", class: 'output' });
+        try {
+            const response = await fetch('http://localhost:5000/chat', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ message: msg }),
+            });
+            const data = await response.json();
+            messages.push({ text: data.response, class: 'output' });
+        }
+        catch (error) {
+            console.error(error);
+            messages.push({ text: 'Пока что я не могу ответить.', class: 'output' });
+        }
+        finally {
+            setMessage("");
+        }
     };
 
     return (
@@ -101,11 +117,9 @@ const ChatWindow = () => {
             <Title />
             <div className="chat-history vertical-scroll">
                 <ul>
-                    {
-                        messages.map((msg, index) => {
-                            return <Message text={msg.text} classMessage={msg.class} />;
-                        })
-                    }
+                    {messages.map((msg, index) => (
+                        <Message key={index} text={msg.text} classMessage={msg.class} />
+                    ))}
                 </ul>
             </div>
             <UserInput onButtonClick={handleMessage} />

@@ -6,20 +6,21 @@ import '../editor.css';
 
 const shapes = [
     {
+        Shape: 'Rectangle',
+        img: 'fa fa-square fa-2x',
+        src: rectangle,
+    },
+    {
         Shape: 'Triangle',
-        img: 'fa fa-paper-plane-o fa-2x',
+        img:'fa fa-sort-asc fa-4x',
         src: triangle,
     },
     {
         Shape: 'Circle',
-        img: 'fa fa-paper-plane-o fa-2x',
+        img: 'fa fa-circle fa-2x',
         src: circle,
     },
-    {
-        Shape: 'Rectangle',
-        img: 'fa fa-paper-plane-o fa-2x',
-        src: rectangle,
-    },
+   
 ]
 
 const ShapeBar = ({ setSelectedShape }) => {
@@ -27,11 +28,11 @@ const ShapeBar = ({ setSelectedShape }) => {
         <div className='shapebar round-border'>
             {shapes.map((shape, index) => (
                 <span>
-                    <img id='shapebuttons' className='selectedBtn' src={shape.src} onClick={() => setSelectedShape(shape.Shape)} />
+                    <i id='shapebuttons' class={shape.img} onClick={() => setSelectedShape(shape.Shape)}></i>
                 </span>
             ))
             }
-
+            <div id='BsFillTriangleFill'></div> 
         </div>
     );
 };
