@@ -17,6 +17,9 @@ function Home() {
         <Link to="/chat" className="Home-link">
           Chat
         </Link>
+        <Link to="/intro" className="Home-link">
+          Intro
+        </Link>
       </header>
     </div>
   );
