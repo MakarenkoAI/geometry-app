@@ -1,3 +1,12 @@
+.intro-background {
+  background-image:
+    url('intro-background.jpg'),
+    linear-gradient(to right, #d7d7d7, #c6c6c6);
+  background-blend-mode: overlay;
+  height: 100vh;
+  background-size: cover;
+}
+
 .intro-container {
     max-width: 400px;
     margin: 0 auto;
@@ -6,6 +15,7 @@
     border: 1px solid #ccc;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #fbfbfb;
   }
   
   .intro-title {
@@ -16,6 +26,7 @@
   .intro-info {
     font-size: 16px;
     margin-bottom: 20px;
+    
   }
   
   .intro-form {
@@ -25,6 +36,7 @@
   
   .intro-inputGroup {
     margin-bottom: 15px;
+    font-weight: bold;
   }
   
   .intro-inputGroup label {
@@ -50,4 +62,14 @@
     text-decoration: none;
     display: inline-block;
     cursor: pointer;
+  }
+
+  .intro-button.disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+
+  .intro-skip-button {
+    padding: 10px;
+    text-align: center;
   }

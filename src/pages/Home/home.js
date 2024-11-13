@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import logo from './logo.svg';
+import logo from './home-logo.png';
 import './home.css';
 
 
@@ -9,16 +9,10 @@ function Home() {
       <header className="Home-header">
         <img src={logo} className="Home-logo" alt="logo" />
         <p>
-          <code>Geometry</code>
+          <code>Здесь может быть крутое название</code>
         </p>
-        <Link to="/editor" className="Home-link">
-          Editor
-        </Link>
-        <Link to="/chat" className="Home-link">
-          Chat
-        </Link>
         <Link to="/intro" className="Home-link">
-          Intro
+          Начать знакомство
         </Link>
       </header>
     </div>

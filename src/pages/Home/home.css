@@ -14,7 +14,7 @@
 }
 
 .Home-header {
-  background-color: #282c34;
+  background: linear-gradient(to bottom right, #667eea, #764ba2);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -25,7 +25,7 @@
 }
 
 .Home-link {
-  color: #61dafb;
+  color: #ffffff;
 }
 
 @keyframes Home-logo-spin {
