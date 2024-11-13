@@ -9,7 +9,7 @@ function Home() {
       <header className="Home-header">
         <img src={logo} className="Home-logo" alt="logo" />
         <p>
-          <code>Здесь может быть крутое название</code>
+          <code>Геометрия</code>
         </p>
         <Link to="/intro" className="Home-link">
           Начать знакомство
