@@ -18,4 +18,4 @@ def chat():
     return Response(json.dumps({"response": response}, ensure_ascii=False), mimetype='application/json')
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000)
+    app.run(host='0.0.0.0')

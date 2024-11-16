@@ -1,5 +1,12 @@
 # Intelligent Geometry Teaching System
 
+## Start
+
+### `cd docker`
+### `docker compose up`
+
+Starts full project
+
 ## Installation
 
 ### `npm install`
