@@ -194,18 +194,25 @@ const Canvas = ({ selectedTool, selectedShape, setSelectedFigure, shapes, setSha
             draggingPoint.x = snappedX;
             draggingPoint.y = snappedY;
             if (draggedShape.type === 'Rectangle') {
-                const [corner1, b, corner2, d] = draggedShape.points;
-    
-                // Recalculate the additional points based on the new corner positions
-                const newAdditionalPoints = [
-                    { x: corner1.x, y: corner2.y, name: b.name }, // Bottom-left
-                    { x: corner2.x, y: corner1.y, name: d.name }  // Top-right
-                ];
-    
-                const updatedPoints = [corner1, newAdditionalPoints[0], corner2, newAdditionalPoints[1]];
+                const [corner1, corner2, corner3, corner4] = draggedShape.points; // Correct order
+
+                //Find the index of the dragged point
+                const pointIndex = draggedShape.points.indexOf(draggingPoint);
+
+                // Recalculate the other corners based on the dragged point
+                let updatedPoints;
+                if (pointIndex === 0) { //corner1 dragged
+                    updatedPoints = [draggingPoint, { x: draggingPoint.x, y: corner2.y, name: corner2.name }, corner3, { x: corner3.x, y: draggingPoint.y, name: corner4.name }];
+                } else if (pointIndex === 1) { //corner2 dragged
+                    updatedPoints = [{ x: draggingPoint.x, y: corner1.y, name: corner1.name}, draggingPoint, { x: corner3.x, y: draggingPoint.y, name: corner3.name}, corner4];
+                } else if (pointIndex === 2) { //corner3 dragged
+                    updatedPoints = [corner1, { x: corner2.x, y: draggingPoint.y, name: corner2.name }, draggingPoint, { x: draggingPoint.x, y: corner4.y, name: corner4.name }];
+                } else { //corner4 dragged
+                    updatedPoints = [{ x: corner1.x, y: draggingPoint.y, name: corner1.name }, corner2, { x: draggingPoint.x, y: corner3.y, name: corner3.name }, draggingPoint];
+                }
                 handleUpdateShape({ ...draggedShape, points: updatedPoints });
             } else {
-                handleUpdateShape({ ...draggedShape});
+                handleUpdateShape({ ...draggedShape });
             }
         }
     };
