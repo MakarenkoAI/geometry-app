@@ -11,10 +11,7 @@ function Intro() {
   return (
     <div className='intro-background'>
       <div className="intro-container">
-        <h1 className="intro-title">Добро пожаловать в наше приложение!</h1>
-        <p className="intro-info">
-          Это приложение поможет вам в учебе, предоставляя полезные материалы и инструменты для школьников.
-        </p>
+        <div className="intro-title">Авторизация</div>
         <form className="intro-form" onSubmit={(e) => e.preventDefault()}>
           <div className="intro-inputGroup">
             <label htmlFor="name">Имя:</label>
@@ -40,10 +37,11 @@ function Intro() {
             to="/editor"
             className={`intro-button ${isFormValid ? '' : 'disabled'}`}
             onClick={(e) => !isFormValid && e.preventDefault()}>
-            Перейти к редактору
+            Далее
           </Link>
+          <Link to="/editor" className="intro-button">Пропустить</Link>
+          <Link to="/" className="intro-button">Назад</Link>
         </form>
-        <div className='intro-skip-button'> <Link to="/editor" className="intro-skip-button">Пропустить</Link> </div>
       </div>
     </div>
   );

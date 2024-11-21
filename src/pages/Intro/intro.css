@@ -1,75 +1,71 @@
 .intro-background {
-  background-image:
-    url('intro-background.jpg'),
-    linear-gradient(to right, #d7d7d7, #c6c6c6);
+  background: linear-gradient(to bottom right, #667eea, #764ba2);
   background-blend-mode: overlay;
   height: 100vh;
   background-size: cover;
 }
 
 .intro-container {
-    max-width: 400px;
-    margin: 0 auto;
-    padding: 20px;
-    text-align: center;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    background-color: #fbfbfb;
-  }
-  
-  .intro-title {
-    font-size: 24px;
-    margin-bottom: 10px;
-  }
-  
-  .intro-info {
-    font-size: 16px;
-    margin-bottom: 20px;
-    
-  }
-  
-  .intro-form {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .intro-inputGroup {
-    margin-bottom: 15px;
-    font-weight: bold;
-  }
-  
-  .intro-inputGroup label {
-    display: block;
-    margin-bottom: 5px;
-  }
-  
-  .intro-inputGroup input {
-    width: 100%;
-    padding: 2px;
-    box-sizing: border-box;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-  }
-  
-  .intro-button {
-    padding: 10px 15px;
-    background-color: #007BFF;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    cursor: pointer;
-  }
+  max-width: 60vh;
+  max-height: 60vh;
+  padding: 20px;
+  text-align: center;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: #fbfbfb;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
 
-  .intro-button.disabled {
-    background-color: #ccc;
-    cursor: not-allowed;
-  }
+.intro-title {
+  font-family: system-ui;
+  font-style: normal;
+  font-size: 24px;
+  margin-bottom: 10px;
+}
 
-  .intro-skip-button {
-    padding: 10px;
-    text-align: center;
-  }
+.intro-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.intro-inputGroup {
+  margin-bottom: 15px;
+  font-weight: bold;
+}
+
+.intro-inputGroup label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.intro-inputGroup input {
+  width: 100%;
+  padding: 2px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.intro-button {
+  padding: 10px 15px;
+  margin-top: 3%;
+  background-color: #83b7ee;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.intro-button.disabled {
+  background-color: #c8c8c8;
+  cursor: not-allowed;
+}

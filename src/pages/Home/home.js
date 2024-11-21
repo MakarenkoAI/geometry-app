@@ -1,21 +1,29 @@
 import { Link } from 'react-router-dom';
-import logo from './home-logo.png';
+import logo from './geometrycolor.png';
 import './home.css';
 
 
 function Home() {
   return (
-    <div className="home">
-      <header className="Home-header">
-        <img src={logo} className="Home-logo" alt="logo" />
-        <p>
-          <code>Геометрия</code>
-        </p>
-        <Link to="/intro" className="Home-link">
-          Начать знакомство
-        </Link>
-      </header>
-    </div>
+    <Link to="/intro" className='default'>
+      <div id='home'>
+        <div id="column-div">
+          <img src={logo} className="Home-logo" alt="logo" />
+        </div>
+        <div id="column-div">
+          <div className='header'>
+            LERNAN.GEOMETRY
+          </div>
+          <div className='advice'>
+            Обучающая система по геометрии<br></br>
+            Бесплатный ресурс для образовательных целей
+          </div>
+          <div className='advice'>
+            Нажмите, чтобы начать
+          </div>
+        </div>
+      </div>
+    </Link>
   );
 }
 
