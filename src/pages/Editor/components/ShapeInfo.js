@@ -206,7 +206,7 @@ const ShapeInfo = ({ shape, onUpdateShape }) => {
                     )}
                 </div>
             </div>
-            <div style={{ marginLeft: '20px', overflow: 'auto', maxWidth: '200px', maxHeight: '120px' }}>
+            <div style={{ marginLeft: '20px', overflow: 'auto', maxWidth: '200px', maxHeight: '100%' }}>
                 <table className='numberstyle' style={{ width: '100%', tableLayout: 'fixed' }}>
                     <thead>
                         <tr>
