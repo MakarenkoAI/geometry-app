@@ -171,7 +171,7 @@ const ShapeInfo = ({ shape, onUpdateShape }) => {
     return (
         <div className='shapeinfo round-border numberstyle' style={{ display: 'flex', alignItems: 'flex-start' }}>
             <div style={{ marginLeft: '70px', flexShrink: 0 }}>
-                <div style={{ overflowX: 'auto' }}>
+                <div style={{ overflow: 'auto', maxHeight: '100px' }}>
                     Shape Details<br />
                     Type: {shape.type}<br />
                     {shape.type === 'Rectangle' && (
