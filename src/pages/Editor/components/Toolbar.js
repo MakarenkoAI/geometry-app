@@ -2,7 +2,7 @@ import React from 'react';
 import '../editor.css';
 
 const Toolbar = ({ setSelectedTool }) => {
-    const tools = ['Select', 'Draw', 'Erase'];
+    const tools = ['Select', 'Draw', 'Erase', 'Edit'];
     return (
         <div className='toolbar round-border'>
             <div className='instruments'>
