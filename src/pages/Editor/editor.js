@@ -11,7 +11,17 @@ const Editor = () => {
     const [selectedTool, setSelectedTool] = useState(null);
     const [selectedShape, setSelectedShape] = useState(null);
     const [selectedSheet, setSelectedSheet] = useState(null);
-    const [selectedFigure, setSelectedFigure] = useState(null); // State for selected figure
+    const [selectedFigure, setSelectedFigure] = useState(null);
+    const [shapes, setShapes] = useState([]); // State to hold all shapes
+
+    const handleUpdateShape = (updatedShape) => {
+        console.log(updatedShape);
+        console.log(shapes);
+        setShapes((prevShapes) =>
+            prevShapes.map((s) => (s.id === updatedShape.id ? updatedShape : s))
+        );
+        console.log(shapes);
+    };
 
     return (
         <div className='app'>
@@ -23,12 +33,22 @@ const Editor = () => {
                 <div className='lower-part'>
                     <Toolbar setSelectedTool={setSelectedTool} />
                     <div className='canvasFrame round-border'>
-                        <Canvas selectedTool={selectedTool} selectedShape={selectedShape} selectedSheet={selectedSheet} setSelectedFigure={setSelectedFigure} />
+                        <Canvas 
+                            selectedTool={selectedTool} 
+                            selectedShape={selectedShape} 
+                            selectedSheet={selectedSheet} 
+                            setSelectedFigure={setSelectedFigure}
+                            shapes={shapes} // Pass shapes to Canvas
+                            setShapes={setShapes} // Pass setShapes to Canvas
+                        />
                     </div>
                 </div>
             </div>
             <div className='noteditor'>
-                <ShapeInfo shape={selectedFigure} />
+                <ShapeInfo 
+                    shape={selectedFigure} 
+                    onUpdateShape={handleUpdateShape} // Pass the update handler
+                />
                 <div id="parent">
                     <ChatComponent />
                 </div>

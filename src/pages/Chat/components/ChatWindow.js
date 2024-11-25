@@ -83,22 +83,29 @@ let messages = [
 ]
 
 const ChatWindow = () => {
-    const [,setMessage] = useState("");
+    const [, setMessage] = useState("");
 
     const handleMessage = async (msg) => {
         setMessage(msg);
         messages.push({ text: msg, class: 'input' });
-        const response = await fetch('http://localhost:5000/chat', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ message: msg }),
-        });
-
-        const data = await response.json();
-        messages.push({ text: data.response, class: 'output' });
-        setMessage("");
+        try {
+            const response = await fetch('http://localhost:5000/chat', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ message: msg }),
+            });
+            const data = await response.json();
+            messages.push({ text: data.response, class: 'output' });
+        }
+        catch (error) {
+            console.error(error);
+            messages.push({ text: 'Пока что я не могу ответить.', class: 'output' });
+        }
+        finally {
+            setMessage("");
+        }
     };
     let ex = exampleAgent("name");
     console.log("answer", ex);
