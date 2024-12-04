@@ -1,4 +1,3 @@
-import nltk
 import numpy as np
 import os
 import pandas as pd
@@ -18,7 +17,6 @@ def initialize_model():
     questions = data['question'].tolist()
     answers = data['answer'].tolist()
 
-    nltk.download('punkt')
     vectorizer = TfidfVectorizer()
     X = vectorizer.fit_transform(questions).toarray()
     y = np.array([i for i in range(len(answers))])

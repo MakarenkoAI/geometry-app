@@ -10,15 +10,9 @@ const Title = () => {
     );
 }
 
-//TODO
-const ProcessMessage = ({ message }) => {
-    //    There should be prossesing with nlp
-}
-
 const UserInput = ({ onButtonClick }) => {
     const [value, setValue] = useState("");
     function handle() {
-        console.log(value);
         onButtonClick(value);
         setValue("");
     }
@@ -43,51 +37,46 @@ const UserInput = ({ onButtonClick }) => {
     );
 }
 
-const OutputMessage = ({ messageText }) => {
+const OutputMessage = ({ messageText, time }) => {
     return (
         <li className="clearfix">
             <div className="message-data">
-                <span className="message-data-time">10:12 AM, Today</span>
+                <span className="message-data-time">{time}</span>
             </div>
             <div className="message my-message">{messageText}</div>
         </li>
     );
 }
 
-const InputMessage = ({ messageText }) => {
+const InputMessage = ({ messageText, time }) => {
     return (
         <li className="clearfix">
             <div className="message-data float-right">
-                <span className="message-data-time">10:10 AM, Today</span>
+                <span className="message-data-time">{time}</span>
             </div>
             <div className="message other-message float-right multiline">{messageText}</div>
         </li>
     );
 }
 
-const Message = ({ text, classMessage }) => {
+const Message = ({ text, classMessage, time }) => {
     if (classMessage === 'output') {
-        return (<OutputMessage messageText={text} />);
-    }
-    else {
+        return (<OutputMessage messageText={text} time={time} />);
+    } else {
         return (
-            <InputMessage messageText={text} />
+            <InputMessage messageText={text} time={time} />
         );
     }
 }
 
-//TODO
-let messages = [
-    // history of messages
-    // should be stored with Cookies or smth like that
-]
-
 const ChatWindow = () => {
-    const [, setMessage] = useState("");
+    const [messages, setMessages] = useState([]);
 
     const handleMessage = async (msg) => {
-        setMessage(msg);
-        messages.push({ text: msg, class: 'input' });
+        const time = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+        const newMessages = [...messages, { text: msg, class: 'input', time }];
+        setMessages(newMessages);
+
         try {
             const response = await fetch('http://localhost:5000/chat', {
                 method: 'POST',
@@ -97,25 +86,28 @@ const ChatWindow = () => {
                 body: JSON.stringify({ message: msg }),
             });
             const data = await response.json();
-            messages.push({ text: data.response, class: 'output' });
-        }
-        catch (error) {
+            const responseTime = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+            setMessages((prevMessages) => [
+                ...prevMessages,
+                { text: data.response, class: 'output', time: responseTime }
+            ]);
+        } catch (error) {
             console.error(error);
-            messages.push({ text: 'Пока что я не могу ответить.', class: 'output' });
-        }
-        finally {
-            setMessage("");
+            const errorTime = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+            setMessages((prevMessages) => [
+                ...prevMessages,
+                { text: 'Пока что я не могу ответить.', class: 'output', time: errorTime }
+            ]);
         }
     };
-    let ex = exampleAgent("name");
-    console.log("answer", ex);
+
     return (
         <div className="chat row">
             <Title />
             <div className="chat-history vertical-scroll">
                 <ul>
                     {messages.map((msg, index) => (
-                        <Message key={index} text={msg.text} classMessage={msg.class} />
+                        <Message key={index} text={msg.text} classMessage={msg.class} time={msg.time} />
                     ))}
                 </ul>
             </div>
