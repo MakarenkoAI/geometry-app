@@ -12,7 +12,7 @@ const Search = () => {
                             alert(e.target.value);
                         }
                     }}
-                    autocomplete="off" />
+                    autoComplete="off" />
             </div>
         </div>
     );
@@ -22,8 +22,7 @@ const HistoryPart = ({ name, tag, active }) => {
     // active
     return (
         <li className="clearfix">
-            {/* <i class="fa fa-leanpub" aria-hidden="true"></i> */}
-            <i id="buttons" class="fa fa-graduation-cap" aria-hidden="true"></i>
+            <i id="buttons" className="fa fa-graduation-cap" aria-hidden="true"></i>
             <div className="about subjecttext">
                 <div className="name">{name}</div>
                 <div className="status"> <i className="fa fa-circle online"></i>{tag}</div>

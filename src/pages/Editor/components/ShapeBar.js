@@ -12,7 +12,7 @@ const shapes = [
     },
     {
         Shape: 'Triangle',
-        img:'fa fa-sort-asc fa-4x',
+        img: 'fa fa-sort-asc fa-4x',
         src: triangle,
     },
     {
@@ -20,7 +20,7 @@ const shapes = [
         img: 'fa fa-circle fa-2x',
         src: circle,
     },
-   
+
 ]
 
 const ShapeBar = ({ setSelectedShape }) => {
@@ -28,11 +28,11 @@ const ShapeBar = ({ setSelectedShape }) => {
         <div className='shapebar round-border'>
             {shapes.map((shape, index) => (
                 <span>
-                    <i id='shapebuttons' class={shape.img} onClick={() => setSelectedShape(shape.Shape)}></i>
+                    <i id='shapebuttons' className={shape.img} onClick={() => setSelectedShape(shape.Shape)}></i>
                 </span>
             ))
             }
-            <div id='BsFillTriangleFill'></div> 
+            <div id='BsFillTriangleFill'></div>
         </div>
     );
 };
