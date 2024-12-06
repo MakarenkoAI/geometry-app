@@ -73,7 +73,9 @@ const ChatWindow = () => {
     const [messages, setMessages] = useState([]);
 
     const handleMessage = async (msg) => {
-        const time = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+        const now = new Date();
+        const options = { weekday: 'long', hour: '2-digit', minute: '2-digit' };
+        const time = now.toLocaleString([], options);
         const newMessages = [...messages, { text: msg, class: 'input', time }];
         setMessages(newMessages);
 
@@ -86,14 +88,14 @@ const ChatWindow = () => {
                 body: JSON.stringify({ message: msg }),
             });
             const data = await response.json();
-            const responseTime = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+            const responseTime = now.toLocaleString([], options);
             setMessages((prevMessages) => [
                 ...prevMessages,
                 { text: data.response, class: 'output', time: responseTime }
             ]);
         } catch (error) {
             console.error(error);
-            const errorTime = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+            const errorTime = now.toLocaleString([], options);
             setMessages((prevMessages) => [
                 ...prevMessages,
                 { text: 'Пока что я не могу ответить.', class: 'output', time: errorTime }
