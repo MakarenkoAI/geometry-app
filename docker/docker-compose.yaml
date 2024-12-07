@@ -1,0 +1,27 @@
+services:
+
+  language_model:
+    build:
+      context: ../
+      dockerfile: docker/language_model/Dockerfile
+    command: ["python", "language_model/app.py"]
+    ports:
+      - "5000:5000"
+
+    
+  geometry_app:
+    depends_on:
+      - sc_machine
+    build:
+      context: ../
+      dockerfile: docker/geometry_app/Dockerfile
+    command: ["npm", "start"]
+    ports:
+      - "3000:3000"
+
+
+  sc_machine:
+    image: ostis/sc-machine
+#    build:
+#      context: ../sc-machine
+    command: serve -b /sc-machine/bin -c /sc-machine/sc-machine.ini
