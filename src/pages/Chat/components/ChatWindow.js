@@ -18,13 +18,16 @@ const keyWordsAbout = new Map([
     ["Предметная область треугольников", "subject_domain_of_triangles"],
     ["Предметная область множеств", "subject_domain_of_sets"],
     ["Предметная область фигур", "subject_domain_of_figures"],
+    ["Предметная область многоугольников", "subject_domain_of_polygons"],
     ["треугольник", "concept_triangle"],
     ["фигура", "concept_figure"],
     ["множество", "concept_set"],
+    ["угол", "d_concept_angle"],
     ["квадрат", "concept_square"],
 ]);
 
-//'Какие ключевые узлы в предметной области треугольников?'
+// Какие ключевые узлы в Предметная область треугольников?
+// Какие ключевые узлы в Предметная область треугольников?
 const ParseInputMessage = (msg) => {
     const splitted = msg.split(" ");
     let keys = [...keyWords.keys()];
