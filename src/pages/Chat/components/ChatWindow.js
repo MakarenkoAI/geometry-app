@@ -1,27 +1,18 @@
 import React, { useState } from 'react';
+import { exampleAgent } from '../../../api/agents/exampleAgent';
 import '../chat.css';
 
 const Title = () => {
     return (
         <div className="chat-header">
-            {/* <a href="http://localhost:3000/chat" data-toggle="modal" data-target="#view_info">
-                <img src="https://th.bing.com/th/id/OIP.A8lyNalw4uW0GtMhQB_9ZAHaHa?w=800&h=800&rs=1&pid=ImgDetMain" alt="avatar" />
-            </a> */}
-            {/* <i id="buttons" class="fa fa-hashtag" aria-hidden="true" style={{ float: 'left', marginTop: '1%' }}></i> */}
             <span className='chat-about'>Geometry Chat</span>
         </div>
     );
 }
 
-//TODO
-const ProcessMessage = ({ message }) => {
-    //    There should be prossesing with nlp
-}
-
 const UserInput = ({ onButtonClick }) => {
     const [value, setValue] = useState("");
     function handle() {
-        console.log(value);
         onButtonClick(value);
         setValue("");
     }
@@ -39,59 +30,55 @@ const UserInput = ({ onButtonClick }) => {
                             }
                         }}
                         autoComplete="off" />
-                    <span className="input-group-text"><i id="buttons" class="fa fa-paper-plane-o fa-2x" onClick={handle}></i></span>
+                    <span className="input-group-text"><i id="buttons" className="fa fa-paper-plane-o fa-2x" onClick={handle}></i></span>
                 </div>
             </div>
         </div>
     );
 }
 
-const OutputMessage = ({ messageText }) => {
+const OutputMessage = ({ messageText, time }) => {
     return (
         <li className="clearfix">
             <div className="message-data">
-                <span className="message-data-time">10:12 AM, Today</span>
+                <span className="message-data-time">{time}</span>
             </div>
             <div className="message my-message">{messageText}</div>
         </li>
     );
 }
 
-const InputMessage = ({ messageText }) => {
+const InputMessage = ({ messageText, time }) => {
     return (
         <li className="clearfix">
             <div className="message-data float-right">
-                <span className="message-data-time">10:10 AM, Today</span>
-                {/* <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="avatar/" /> */}
+                <span className="message-data-time">{time}</span>
             </div>
             <div className="message other-message float-right multiline">{messageText}</div>
         </li>
     );
 }
 
-const Message = ({ text, classMessage }) => {
+const Message = ({ text, classMessage, time }) => {
     if (classMessage === 'output') {
-        return (<OutputMessage messageText={text} />);
-    }
-    else {
+        return (<OutputMessage messageText={text} time={time} />);
+    } else {
         return (
-            <InputMessage messageText={text} />
+            <InputMessage messageText={text} time={time} />
         );
     }
 }
 
-//TODO
-let messages = [
-    // history of messages
-    // should be stored with Cookies or smth like that
-]
-
 const ChatWindow = () => {
-    const [, setMessage] = useState("");
+    const [messages, setMessages] = useState([]);
 
     const handleMessage = async (msg) => {
-        setMessage(msg);
-        messages.push({ text: msg, class: 'input' });
+        const now = new Date();
+        const options = { weekday: 'long', hour: '2-digit', minute: '2-digit' };
+        const time = now.toLocaleString([], options);
+        const newMessages = [...messages, { text: msg, class: 'input', time }];
+        setMessages(newMessages);
+
         try {
             const response = await fetch('http://localhost:5000/chat', {
                 method: 'POST',
@@ -101,14 +88,18 @@ const ChatWindow = () => {
                 body: JSON.stringify({ message: msg }),
             });
             const data = await response.json();
-            messages.push({ text: data.response, class: 'output' });
-        }
-        catch (error) {
+            const responseTime = now.toLocaleString([], options);
+            setMessages((prevMessages) => [
+                ...prevMessages,
+                { text: data.response, class: 'output', time: responseTime }
+            ]);
+        } catch (error) {
             console.error(error);
-            messages.push({ text: 'Пока что я не могу ответить.', class: 'output' });
-        }
-        finally {
-            setMessage("");
+            const errorTime = now.toLocaleString([], options);
+            setMessages((prevMessages) => [
+                ...prevMessages,
+                { text: 'Пока что я не могу ответить.', class: 'output', time: errorTime }
+            ]);
         }
     };
 
@@ -118,7 +109,7 @@ const ChatWindow = () => {
             <div className="chat-history vertical-scroll">
                 <ul>
                     {messages.map((msg, index) => (
-                        <Message key={index} text={msg.text} classMessage={msg.class} />
+                        <Message key={index} text={msg.text} classMessage={msg.class} time={msg.time} />
                     ))}
                 </ul>
             </div>

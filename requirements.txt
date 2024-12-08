@@ -1,5 +1,3 @@
-nltk
-tensorflow
 scikit-learn
 pandas
 flask
