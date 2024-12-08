@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { GoogleLogin } from '@react-oauth/google';
 import { jwtDecode } from "jwt-decode";
 import './intro.css';
+import { createUserAgent } from '../../api/sc/agents/createUserAgent';
 
 function Intro() {
   const [name, setName] = useState('');
@@ -13,6 +14,14 @@ function Intro() {
   };
 
   const isFormValid = name.trim() !== '' && grade.trim() !== '';
+  const handleMessage = async () => {
+    if (isFormValid){
+      await createUserAgent(name, grade);
+    }
+    else {
+      console.log("Form is not valid");
+    }
+  };
 
   return (
     <div className='intro-background'>
@@ -42,7 +51,7 @@ function Intro() {
           <Link
             to="/editor"
             className={`intro-button ${isFormValid ? '' : 'disabled'}`}
-            onClick={(e) => !isFormValid && e.preventDefault()}>
+            onClick={handleMessage}>
             Далее
           </Link>
           <Link to="/editor" className="intro-button">Пропустить</Link>
