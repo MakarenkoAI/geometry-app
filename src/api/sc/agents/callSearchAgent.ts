@@ -74,15 +74,18 @@ export const callSearchAgent = async (actionClass, argument, keyword) => {
         console.log("answer");
         console.log(r);
 
-        let listNodes = new Set();
         let symbol = ', ';
         let addition = '';
         for (let i = 0; i < r.length; i++) {
             if (i == r.length - 1) { symbol = '.' };
             let rez = await helper.getMainIdentifier(r[i].get(nodeAlias), "lang_ru");
-            console.log(rez);
-            listNodes.add(rez);
-            addition += rez + symbol;
+            let rezLink = await client.getLinkContents([r[i].get(nodeAlias)]);
+            if (rez) {
+                addition += rez + symbol;
+            }
+            if (rezLink[0].data) {
+                addition += rezLink[0].data + symbol;
+            }
         }
         if (!addition.length) {
             return "Я не знаю ответ на данный вопрос.";
