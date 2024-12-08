@@ -1,4 +1,4 @@
-/*import { ScAddr, ScTemplate, ScType } from 'ts-sc-client';
+import { ScAddr, ScTemplate, ScType } from 'ts-sc-client';
 import { client } from '../client';
 
 const concept = 'concept_set';
@@ -18,4 +18,4 @@ export const exampleAgent = async () => {
     const userNode = await client.getUser();
     const user = client.getLinkContents([userNode]);
     return user;
-};*/
+};
