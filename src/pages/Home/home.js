@@ -12,11 +12,11 @@ function Home() {
         </div>
         <div id="column-div">
           <div className='header'>
-            LERNAN.GEOMETRY
+            OSTIS.GEOMETRY
           </div>
           <div className='advice'>
             Обучающая система по геометрии<br></br>
-            Бесплатный ресурс для образовательных целей
+            Бесплатный ресурс для образовательных целей<br></br>
           </div>
           <div className='advice'>
             Нажмите, чтобы начать

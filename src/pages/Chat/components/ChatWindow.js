@@ -11,23 +11,23 @@ const keyWords = new Map([
     ["задачи", "action_find_tasks"],
     ["утверждения", "action_find_statements"],
     ["доказательства", "action_find_statements_proofs"],
-    ["теоремы", "action_find_statements_theorems"],
+    ["теоремы", "action_find_theorems"],
 ]);
 
 const keyWordsAbout = new Map([
-    ["Предметная область треугольников", "subject_domain_of_triangles"],
-    ["Предметная область множеств", "subject_domain_of_sets"],
-    ["Предметная область фигур", "subject_domain_of_figures"],
-    ["Предметная область многоугольников", "subject_domain_of_polygons"],
-    ["треугольник", "concept_triangle"],
-    ["фигура", "concept_figure"],
-    ["множество", "concept_set"],
-    ["угол", "d_concept_angle"],
+    ["Предметн област треугольни", "subject_domain_of_triangles"],
+    ["Предметн област множеств", "subject_domain_of_sets"],
+    ["Предметн област многоугольни", "subject_domain_of_polygons"],
+    ["треугольни", "concept_triangle"],
+    ["фигур", "concept_figure"],
+    ["множеств", "concept_set"],
+    ["уг", "d_concept_angle"],
     ["квадрат", "concept_square"],
 ]);
 
 // Какие ключевые узлы в Предметная область треугольников?
-// Какие ключевые узлы в Предметная область треугольников?
+// Какие аксиомы у треугольник?
+// Какие определения у треугольник?
 const ParseInputMessage = (msg) => {
     const splitted = msg.split(" ");
     let keys = [...keyWords.keys()];
@@ -35,9 +35,16 @@ const ParseInputMessage = (msg) => {
         if (splitted.includes(keys[i])) {
             let keysAbout = [...keyWordsAbout.keys()];
             for (let j = 0; j < keysAbout.length; j++) {
-                if (msg.includes(keysAbout[j])) {
-                    return [keyWords.get(keys[i]), keyWordsAbout.get(keysAbout[j]), keys[i]];
+                const splittedKeys = keysAbout[j].split(" ");
+                let chosen = true;
+                for (let k = 0; k < splittedKeys.length; k++) {
+                    if (!msg.includes(splittedKeys[k])) {
+                        chosen = false;
+                        break;
+                    }
                 }
+                if (chosen)
+                    return [keyWords.get(keys[i]), keyWordsAbout.get(keysAbout[j]), keys[i]];
             }
         }
     }
