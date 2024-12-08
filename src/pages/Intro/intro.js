@@ -1,12 +1,21 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './intro.css';
+import { createUserAgent } from '../../api/sc/agents/createUserAgent';
 
 function Intro() {
   const [name, setName] = useState('');
   const [grade, setGrade] = useState('');
 
   const isFormValid = name.trim() !== '' && grade.trim() !== '';
+  const handleMessage = async () => {
+    if (isFormValid){
+      await createUserAgent(name, grade);
+    }
+    else {
+      console.log("Form is not valid");
+    }
+  };
 
   return (
     <div className='intro-background'>
@@ -36,7 +45,7 @@ function Intro() {
           <Link
             to="/editor"
             className={`intro-button ${isFormValid ? '' : 'disabled'}`}
-            onClick={(e) => !isFormValid && e.preventDefault()}>
+            onClick={handleMessage}>
             Далее
           </Link>
           <Link to="/editor" className="intro-button">Пропустить</Link>

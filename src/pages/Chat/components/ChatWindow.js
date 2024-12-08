@@ -1,6 +1,45 @@
-import React, { useState } from 'react';
-import { exampleAgent } from '../../../api/agents/exampleAgent';
+import { callSearchAgent } from '../../../api/sc/agents/callSearchAgent';
 import '../chat.css';
+import React, { useCallback, useEffect, useState, Fragment } from 'react';
+
+const keyWords = new Map([
+    ["узлы", "action_find_key_concepts"],
+    ["изображения", "action_find_images"],
+    ["отношения", "action_find_relations"],
+    ["определения", "action_find_definitions"],
+    ["аксиомы", "action_find_axioms"],
+    ["задачи", "action_find_tasks"],
+    ["утверждения", "action_find_statements"],
+    ["доказательства", "action_find_statements_proofs"],
+    ["теоремы", "action_find_statements_theorems"],
+]);
+
+const keyWordsAbout = new Map([
+    ["Предметная область треугольников", "subject_domain_of_triangles"],
+    ["Предметная область множеств", "subject_domain_of_sets"],
+    ["Предметная область фигур", "subject_domain_of_figures"],
+    ["треугольник", "concept_triangle"],
+    ["фигура", "concept_figure"],
+    ["множество", "concept_set"],
+    ["квадрат", "concept_square"],
+]);
+
+//'Какие ключевые узлы в предметной области треугольников?'
+const ParseInputMessage = (msg) => {
+    const splitted = msg.split(" ");
+    let keys = [...keyWords.keys()];
+    for (let i = 0; i < keys.length; i++) {
+        if (splitted.includes(keys[i])) {
+            let keysAbout = [...keyWordsAbout.keys()];
+            for (let j = 0; j < keysAbout.length; j++) {
+                if (msg.includes(keysAbout[j])) {
+                    return [keyWords.get(keys[i]), keyWordsAbout.get(keysAbout[j]), keys[i]];
+                }
+            }
+        }
+    }
+    return null;
+}
 
 const Title = () => {
     return (
@@ -80,18 +119,28 @@ const ChatWindow = () => {
         setMessages(newMessages);
 
         try {
-            const response = await fetch('http://localhost:5000/chat', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ message: msg }),
-            });
-            const data = await response.json();
+            const paramaters = ParseInputMessage(msg);
+            let data = "";
+            if (paramaters !== null) {
+                const action_class = paramaters[0];
+                const argument = paramaters[1];
+                const keyword = paramaters[2];
+                console.log(paramaters);
+                data = await callSearchAgent(action_class, argument, keyword);
+            }
+            else {
+                const response = await fetch('http://localhost:5000/chat', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json', },
+                    body: JSON.stringify({ message: msg }),
+                });
+                data = await response.json();
+                data = data.response;
+            }
             const responseTime = now.toLocaleString([], options);
             setMessages((prevMessages) => [
                 ...prevMessages,
-                { text: data.response, class: 'output', time: responseTime }
+                { text: data, class: 'output', time: responseTime }
             ]);
         } catch (error) {
             console.error(error);
