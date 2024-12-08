@@ -1,4 +1,4 @@
-# Intelligent Geometry Teaching System
+# Intelligent Geometry Learning System
 
 ## Start
 
