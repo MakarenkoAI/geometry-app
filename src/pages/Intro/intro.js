@@ -1,10 +1,16 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { GoogleLogin } from '@react-oauth/google';
+import { jwtDecode } from "jwt-decode";
 import './intro.css';
 
 function Intro() {
   const [name, setName] = useState('');
   const [grade, setGrade] = useState('');
+
+  const handleLoginSuccess = (userName) => {
+    setName(userName);
+  };
 
   const isFormValid = name.trim() !== '' && grade.trim() !== '';
 
@@ -41,6 +47,18 @@ function Intro() {
           </Link>
           <Link to="/editor" className="intro-button">Пропустить</Link>
           <Link to="/" className="intro-button">Назад</Link>
+          <span className='intro-google-login'>
+            <GoogleLogin
+              onSuccess={credentialResponse => {
+                const decoded = jwtDecode(credentialResponse?.credential);
+                console.log(decoded);
+                handleLoginSuccess(decoded.given_name);
+              }}
+              onError={() => {
+                console.log('Login Failed');
+              }}
+            />
+          </span>
         </form>
       </div>
     </div>

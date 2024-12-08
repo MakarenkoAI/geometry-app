@@ -69,3 +69,22 @@
   background-color: #c8c8c8;
   cursor: not-allowed;
 }
+
+.intro-google-login {
+  display: inline-block;
+  margin-top: 10px; /* Добавляем отступ сверху */
+}
+
+.intro-google-login button {
+  padding: 8px 12px;
+  background-color: #dd4b39;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.intro-google-login button:hover {
+  background-color: #c23321;
+}
