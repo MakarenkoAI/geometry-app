@@ -25,3 +25,5 @@ services:
 #    build:
 #      context: ../sc-machine
     command: serve -b /sc-machine/bin -c /sc-machine/sc-machine.ini
+    ports:
+       - "8090:8090"
