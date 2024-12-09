@@ -14,12 +14,9 @@ const Toolbar = ({ setSelectedTool }) => {
         <div className='toolbar round-border'>
             <div className='instruments'>
                 {tools.map((tool, index) => (
-                    <div className="tooltip-container" key={index}>
-                    <button className='toolButton round-border selectedBtn' key={index} onClick={() => setSelectedTool(tool)}>
+                    <button className='toolButton round-border selectedBtn' key={index} onClick={() => setSelectedTool(tool)} title={toolDescriptions[tool]}>
                         {tool}
                     </button>
-                    <div className="tooltip">{toolDescriptions[tool]}</div>
-                    </div>
                 ))}
             </div>
             <div className='back'>

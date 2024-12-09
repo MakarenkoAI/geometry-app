@@ -31,11 +31,8 @@
   background-color: #ffffff;
 }
 
-.instruments {
+.instruments{
   height: 90%;
-  display: flex; 
-  flex-direction: column;
-  align-items: center;
 }
 
 .back{
@@ -125,30 +122,25 @@
 }
 
 .toolButton {
-  background: linear-gradient(135deg, #f0f0f0, #e0e0e0);
-  border: 2px solid #ccc;
-  border-radius: 5px;
+  background-color: #fff;
+  width: 80%;
+  border-color: #e0e0e0;
+  color: #787878;
   cursor: pointer;
   font-family: Neucha, sans-serif;
   font-size: 1rem;
-  padding: 0.7rem;
+  padding: .7rem;
   margin-left: 8%;
   margin-top: 10%;
-  transition: background 0.3s, transform 0.2s, box-shadow 0.2s;
-  display: flex; 
-  align-items: center; 
-  justify-content: center;
 }
 
 .selectedBtn:hover {
-  background: linear-gradient(135deg, #e0e0e0, #d0d0d0);
-  transform: translateY(-2px);
-  box-shadow: rgba(0, 0, 0, 0.2) 0px 4px 8px;
+  box-shadow: rgba(0, 0, 0, .3) 2px 8px 8px -5px;
+  transform: translate3d(0, 2px, 0);
 }
 
 .selectedBtn:focus {
-  background-color: #d0d0d0;
-  box-shadow: rgba(0, 0, 0, 0.4) 0px 4px 12px;
+  box-shadow: rgba(0, 0, 0, .3) 2px 8px 4px -6px;
 }
 
 .sheetButton {
@@ -189,44 +181,4 @@ th {
 #fa-buttons {
   color: #c9c9c9;
   text-shadow: 1px 1px 1px #ffffff;
-}
-
-
-.tooltip-container {
-  position: relative;
-  display: inline-block;
-}
-
-.tooltip {
-  visibility: hidden;
-  background-color: #444; 
-  color: #fff; 
-  text-align: center;
-  padding: 8px 12px; 
-  border-radius: 5px;
-  position: absolute;
-  left: 110%; 
-  top: 50%; 
-  transform: translateY(-50%); 
-  white-space: nowrap;
-  z-index: 1;
-  opacity: 0;
-  transition: opacity 0.3s, transform 0.3s; 
-}
-
-.tooltip::after {
-  content: "";
-  position: absolute;
-  top: 50%; 
-  right: 100%;
-  margin-top: -5px; 
-  border-width: 5px;
-  border-style: solid;
-  border-color: transparent transparent transparent #444; /* Цвет и направление стрелки */
-}
-
-.tooltip-container:hover .tooltip {
-  visibility: visible;
-  opacity: 1;
-  transform: translateY(-50%) translateX(5px);
 }
